@@ -30,7 +30,7 @@ export default function Textform(props) {
     navigator.clipboard.writeText(copyText.value);
     props.showAlert("Copied to Clipboard", "success")
   }
-  const [text, setText] = useState("Enter text here");
+  const [text, setText] = useState("");
   // text = "new text";  // worng way to change text
   // setText = "new text"  // correct way to change texts
   return (
@@ -41,13 +41,13 @@ export default function Textform(props) {
       <div className="mb-3" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}  >
         <textarea className="form-control" style={{ backgroundColor: props.mode === 'dark' ? '#80808017' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}  value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
       </div>
-      <button className="btn btn-primary mx-2" onClick={handleUpClick} >Convert to UpperCase</button>
-      <button className="btn btn-primary mx-2" onClick={handleLwClick} >Convert to LowerCase</button>
-      <button className="btn btn-success mx-2" onClick={copyCb} >Copy to Clipboard</button>
-      <button className="btn btn-danger mx-2" onClick={deletetxt} >Clear</button>
+      <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick} >Convert to UpperCase</button>
+      <button className="btn btn-primary mx-3 my-2" onClick={handleLwClick} >Convert to LowerCase</button>
+      <button className="btn btn-success mx-2 my-2" onClick={copyCb} >Copy to Clipboard</button>
+      <button className="btn btn-danger mx-2 my-2" onClick={deletetxt} >Clear</button>
       <div className="container my-2">
         <h3>Your text summary</h3>
-        <p>{text.split(" ").length} Words and {text.length} Characters</p>
+        <p>{text.split(" ").filter((elem)=>{return elem.length !==0}).length} Words and {text.length} Characters</p>
         <p>{0.008 * text.split(" ").length} Minutes read</p>
         <h2>Preview</h2>
         <h6>{text}</h6>

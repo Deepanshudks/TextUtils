@@ -48,7 +48,7 @@ function App() {
         <div className="container my-3 ">
           <Routes>
             <Route path="/about"
-              element={<About /> }  >
+              element={<About mode={mode} /> }  >
             </Route>
             <Route path="/"
               element={<Textform showAlert={showAlert} heading="Enter text below to convert" mode={mode} />} >
